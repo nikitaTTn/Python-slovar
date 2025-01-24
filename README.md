@@ -1,0 +1,2 @@
+# Python-slovar
+slovar python
