@@ -1,11 +1,11 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
 from PyQt5.QtCore import Qt
 from theory_win import TheoryWin
 
 class MainWin(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(100, 100, 600, 400)
+        self.setGeometry(100, 100, 400, 200)
         self.setWindowTitle("Тест по словарям в Python")
         self.initUI()
         self.connects()
