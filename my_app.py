@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
 from PyQt5.QtCore import Qt
 from theory_win import TheoryWin
-////////////////////////////////////////////////СДЕЛАТЬ ТАЙМЕР И КНОПКУ НАЗАД В ВОПРОСАХ\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 class MainWin(QWidget):
     def __init__(self):
         super().__init__()
