@@ -1,22 +1,20 @@
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
+from PyQt5.QtCore import Qt
 
 class FinalWin(QWidget):
-    def __init__(self, score):
+    def __init__(self, total_score, total_questions, elapsed_time):
         super().__init__()
-        self.score = score
-        self.setGeometry(100, 100, 400, 200)
-        self.setWindowTitle("Результаты теста по словарям")
-        self.initUI()
-        self.show()
+        self.setGeometry(100, 100, 300, 150)
+        self.setWindowTitle("Результаты теста")
+        self.initUI(total_score, total_questions, elapsed_time)
 
-    def initUI(self):
-        layout = QVBoxLayout()
+    def initUI(self, total_score, total_questions, elapsed_time):
+        layout = QVBoxLayout(self)
 
-        dict_knowledge_text = "Отлично! Вы хорошо знаете словари в Python." if self.score["dict_knowledge"] > 3 else "Вам нужно подтянуть знания по словарям."
+        result_label = QLabel(f"Ваш результат: {total_score} из {total_questions} баллов", self)
+        time_label = QLabel(f"Затраченное время: {elapsed_time} секунд", self)
 
-        dict_practice_text = "Вы отлично справляетесь с практическими задачами по словарям!" if self.score["dict_practice"] > 2 else "Практические навыки работы со словарями требуют улучшения."
-
-        layout.addWidget(QLabel(dict_knowledge_text))
-        layout.addWidget(QLabel(dict_practice_text))
+        layout.addWidget(result_label, alignment=Qt.AlignCenter)
+        layout.addWidget(time_label, alignment=Qt.AlignCenter)
 
         self.setLayout(layout)
