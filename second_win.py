@@ -12,23 +12,49 @@ class TestWin(QWidget):
         self.setWindowTitle("Тест по словарям в Python")
 
         self.questions = [
-            {"question": "Как создать пустой словарь?", "options": ["dict()", "{}", "[]"], "answer": ["dict()", "{}"]},
-            {"question": "Как добавить элемент в словарь?", "options": ["dict[key] = value", "dict.add(key, value)", "dict.insert(key, value)"], "answer": ["dict[key] = value"]},
+            {"question": "Как создать пустой словарь?", 
+             "options": ["dict()", "{}", "[]"], 
+             "answer": ["dict()", "{}"]},
+
+            {"question": "Как добавить элемент в словарь?", 
+             "options": ["dict[key] = value", "dict.add(key, value)", "dict.insert(key, value)"], 
+             "answer": ["dict[key] = value"]},
+
+            {"question": "Как удалить элемент из словаря?", 
+             "options": ["del dict[key]", "dict.pop(key)", "dict.remove(key)"], 
+             "answer": ["del dict[key]", "dict.pop(key)"]},
+
+            {"question": "Как проверить наличие ключа в словаре?", 
+             "options": ["key in dict", "dict.contains(key)", "dict.has_key(key)"], 
+             "answer": ["key in dict"]},
+
+            {"question": "Как получить все ключи словаря?", 
+             "options": ["dict.keys()", "dict.get_keys()", "dict.all_keys()"], 
+             "answer": ["dict.keys()"]},
+
+            {"question": "Как объединить два словаря?", 
+             "options": ["dict1.update(dict2)", "dict1 + dict2", "merge(dict1, dict2)"], 
+             "answer": ["dict1.update(dict2)"]},
+
+            {"question": "Как создать словарь с помощью генератора?", 
+             "options": ["{key: value for key, value in iterable}", "dict.from_generator(iterable)", "generate_dict(iterable)"], 
+             "answer": ["{key: value for key, value in iterable}"]},
         ]
 
         self.current_question_index = 0
         self.total_score = 0  
-        self.button_groups = []  
-        self.start_time = 0  
+        self.button_groups = []   
+        self.start_time = 0   
         
         self.initUI()
-        self.connects() 
+        self.connects()  
         self.show()
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_timer)
-        self.elapsed_time = 0  
+        self.elapsed_time = 0   
         self.timer.start(1000)
+
 
     def initUI(self):
         self.layout = QVBoxLayout(self)
