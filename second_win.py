@@ -12,16 +12,15 @@ class TestWin(QWidget):
         self.setGeometry(100, 100, 300, 200)
         self.setWindowTitle("Тест по словарям в Python")
 
-        # Вопросы с разными типами
         self.questions = [
             {
-                "type": "choice",  # Тип вопроса: выбор из вариантов
+                "type": "choice", 
                 "question": "Как создать пустой словарь?",
                 "options": ["dict()", "{}", "[]"],
                 "answer": ["dict()", "{}"]
             },
             {
-                "type": "input",  # Тип вопроса: ручной ввод
+                "type": "input", 
                 "question": "Какой метод используется для удаления элемента из словаря?",
                 "answer": ["del", "pop"]
             },
@@ -35,13 +34,50 @@ class TestWin(QWidget):
                 "type": "input",
                 "question": "Какой метод возвращает все ключи словаря?",
                 "answer": ["keys"]
+            },
+            {
+                "type": "choice",
+                "question": "Как удалить элемент из словаря?",
+                "options": ["del dict[key]", "dict.pop(key)", "dict.remove(key)"],
+                "answer": ["del dict[key]"]
+            },
+            {
+                "type": "input",
+                "question": "Как получить все ключи словаря?",
+                "answer": ["dict.keys()"]
+            },
+            {
+                "type": "choice",
+                "question": "Как объединить два словаря?",
+                "options": ["dict1.update(dict2)", "dict1 + dict2", "merge(dict1, dict2)"],
+                "answer": ["dict1.update(dict2)"]
+            },
+            {
+                "type": "input",
+                "question": "Как создать словарь с помощью генератора?",
+                "answer": ["{key: value for key, value in iterable}"]
+            },
+            {
+                "type": "input",
+                "question": "Как отсортировать словарь по ключам?",
+                "answer": ["sorted(dict.keys())"]
+            },
+            {
+                "type": "input",
+                "question": "Как перебрать словарь с помощью метода items()",
+                "answer": ["for key, value in dict.items()"]
+            },
+            {
+                "type": "input",
+                "question": "Как проверить наличие ключа в словаре?",
+                "answer": ["key in dict"]
             }
         ]
 
         self.current_question_index = 0
         self.total_score = 0
-        self.button_groups = []  # Только для вопросов с выбором
-        self.input_fields = []  # Для вопросов с ручным вводом
+        self.button_groups = []  
+        self.input_fields = []  
         self.start_time = 0
 
         self.initUI()
@@ -83,7 +119,6 @@ class TestWin(QWidget):
             question_layout.addWidget(question_label)
 
             if question["type"] == "choice":
-                # Вопрос с выбором ответа
                 button_group = QButtonGroup(question_widget)
                 for option in question["options"]:
                     radio_button = QRadioButton(option, question_widget)
@@ -91,7 +126,6 @@ class TestWin(QWidget):
                     question_layout.addWidget(radio_button)
                 self.button_groups.append(button_group)
             elif question["type"] == "input":
-                # Вопрос с ручным вводом
                 input_field = QLineEdit(question_widget)
                 question_layout.addWidget(input_field)
                 self.input_fields.append(input_field)
@@ -119,25 +153,23 @@ class TestWin(QWidget):
             self.submit_btn.hide()
 
     def check_answers(self):
-        self.total_score = 0  # Сбрасываем счетчик перед проверкой
-        button_group_index = 0  # Индекс для button_groups
-        input_field_index = 0   # Индекс для input_fields
+        self.total_score = 0  
+        button_group_index = 0 
+        input_field_index = 0   
 
         for i, question in enumerate(self.questions):
             if question["type"] == "choice":
-                # Проверка вопросов с выбором
                 selected_button = self.button_groups[button_group_index].checkedButton()
                 if selected_button:
                     selected_answer = selected_button.text()
                     if selected_answer in question["answer"]:
                         self.total_score += 1
-                button_group_index += 1  # Переходим к следующей группе кнопок
+                button_group_index += 1  
             elif question["type"] == "input":
-                # Проверка вопросов с ручным вводом
                 user_answer = self.input_fields[input_field_index].text().strip()
                 if user_answer in question["answer"]:
                     self.total_score += 1
-                input_field_index += 1  # Переходим к следующему полю ввода
+                input_field_index += 1
 
         self.timer.stop()
         self.fw = FinalWin(self.total_score, len(self.questions), self.elapsed_time, self.user_info)
