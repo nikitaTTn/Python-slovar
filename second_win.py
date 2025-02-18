@@ -26,9 +26,9 @@ class TestWin(QWidget):
             },
             {
                 "type": "choice",
-                "question": "Как проверить наличие ключа в словаре?",
-                "options": ["key in dict", "dict.contains(key)", "dict.has_key(key)"],
-                "answer": ["key in dict"]
+                "question": "Что выведет массив\nfruits = ['apple', 'banana', 'cherry']\nindex = fruits.index('banana')\nprint(index)",
+                "options": ["1", "0", "11"],
+                "answer": ["1"]
             },
             {
                 "type": "input",
@@ -37,9 +37,9 @@ class TestWin(QWidget):
             },
             {
                 "type": "choice",
-                "question": "Как удалить элемент из словаря?",
-                "options": ["del dict[key]", "dict.pop(key)", "dict.remove(key)"],
-                "answer": ["del dict[key]"]
+                "question": "Что выведет массив?\nfruits = ['apple', 'banana', 'cherry']\nadditional_fruits = ['orange', 'grape']\nfruits.extend(additional_fruits)\nprint(fruits)",
+                "options": ["['apple', 'banana', 'cherry', 'orange', 'grape']", "['apple', 'banana', 'cherry']", "['orange', 'grape']"],
+                "answer": ["['apple', 'banana', 'cherry', 'orange', 'grape']"]
             },
             {
                 "type": "input",
@@ -48,9 +48,9 @@ class TestWin(QWidget):
             },
             {
                 "type": "choice",
-                "question": "Как объединить два словаря?",
-                "options": ["dict1.update(dict2)", "dict1 + dict2", "merge(dict1, dict2)"],
-                "answer": ["dict1.update(dict2)"]
+                "question": "Что выведет массив?\nfruits = ['apple', 'banana', 'cherry', 'banana']\ncount = fruits.count('banana')\nprint(count)",
+                "options": ["2", "5", "Error"],
+                "answer": ["2"]
             },
             {
                 "type": "input",
@@ -69,8 +69,8 @@ class TestWin(QWidget):
             },
             {
                 "type": "input",
-                "question": "Как проверить наличие ключа в словаре?",
-                "answer": ["key in dict"]
+                "question": "Что выведет массив?\nfruits = ['apple', 'banana', 'cherry']\nfruits_copy = fruits.copy()\nprint(fruits_copy)",
+                "answer": ["['apple', 'banana', 'cherry']"]
             }
         ]
 
