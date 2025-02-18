@@ -7,7 +7,7 @@ class MainWin(QWidget):
         super().__init__()
         self.setGeometry(100, 100, 600, 400)
         self.setWindowTitle("Тест по словарям в Python")
-        self.user_info = {}  # Для хранения данных пользователя
+        self.user_info = {}  
         self.initUI()
         self.connects()
         self.show()
@@ -24,7 +24,6 @@ class MainWin(QWidget):
         self.setLayout(self.layout_line)
 
     def next_click(self):
-        # Запрашиваем ФИО и группу
         name, ok1 = QInputDialog.getText(self, 'Ввод данных', 'Введите ваше ФИО:')
         group, ok2 = QInputDialog.getText(self, 'Ввод данных', 'Введите вашу группу:')
         
